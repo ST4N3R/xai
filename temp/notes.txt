@@ -1,0 +1,47 @@
+1. Analisys
+id - id (not 1, to n)
+
+gender:
+Female    2994
+Male      2115
+Other        1
+
+age - min 0, max 82
+
+hypertension - nadciśnienie
+0    4612
+1     498
+
+heart_disease - choroby serca
+0    4834
+1     276
+
+ever_married:
+Yes    3353
+No     1757
+
+work_type:
+Private          2925
+Self-employed     819
+children          687
+Govt_job          657
+Never_worked       22
+
+Residence_type:
+Urban    2596
+Rural    2514
+
+avg_glucose_level - średni poziom glukozy, min 55, max 271; Normy na czczo 70 - 99, normy po jedzeniu 70 - 140
+
+(Ma wartości brakujące - około 200) 
+bmi - indeks wagi; Niedowaga < 18.5, Norma 18.5 - 24.9, Nadwaga 25 - 29.9, Otyłość 30 - 34.9, Otyłość olbrzymia >35
+
+smoking_status:
+never smoked       1892
+Unknown            1544
+formerly smoked     885
+smokes              789
+
+(final) stroke:
+0    4861
+1     249
