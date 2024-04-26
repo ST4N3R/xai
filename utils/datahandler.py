@@ -1,3 +1,42 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+
+
 class DataHandler():
     def __init__(self) -> None:
-        pass
+        self.df = None
+
+
+    def load_data(self, path=r"C:\Programowanie\GitHub\xai\healthcare-dataset-stroke-data.csv") -> None:
+        self.df = pd.read_csv(path)
+
+    
+    def fill_values(self) -> None:
+        self.df.fillna(value=self.df['bmi'].mean(), inplace=True)
+
+
+    def preprocess_data(self) -> None:
+        cat_columns = ['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status']
+        ohe = pd.get_dummies(self.df[cat_columns], prefix=cat_columns)
+
+        self.df = pd.concat([self.df, ohe], axis=1)
+        self.df.drop(cat_columns, axis=1, inplace=True)
+
+
+    def standarization(self) -> None:
+        self.preprocess_data()
+        self.fill_values()
+
+        scaler = StandardScaler()
+        self.df = pd.DataFrame(scaler.fit_transform(self.df), columns=self.df.columns)
+    
+
+    def get_data_split(self, test_size=0.2) -> list:
+        X = self.df.iloc[:, :-1]
+        y = self.df.iloc[:, -1]
+        return train_test_split(X, y, test_size=test_size)
+
+
+    def get_data(self) -> pd.DataFrame:
+        return self.df
