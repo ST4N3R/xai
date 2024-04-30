@@ -22,6 +22,7 @@ class DataHandler():
 
         self.df = pd.concat([self.df, ohe], axis=1)
         self.df.drop(cat_columns, axis=1, inplace=True)
+        self.df.drop(["id"], axis=1, inplace=True)
 
 
     def standarization(self) -> None:
@@ -29,13 +30,16 @@ class DataHandler():
         self.fill_values()
 
         scaler = StandardScaler()
-        self.df = pd.DataFrame(scaler.fit_transform(self.df), columns=self.df.columns)
+        self.df = pd.concat([pd.DataFrame(scaler.fit_transform(self.df.iloc[:, :-1]), columns=self.df.columns[:-1]), 
+                             self.df.iloc[:, -1]], 
+                             axis=1)
+        self.df.reset_index(inplace=True, drop=True)
     
 
-    def get_data_split(self, test_size=0.2) -> list:
+    def get_data_split(self, test_size=0.2, seed=2021) -> list:
         X = self.df.iloc[:, :-1]
         y = self.df.iloc[:, -1]
-        return train_test_split(X, y, test_size=test_size)
+        return train_test_split(X, y, test_size=test_size, random_state=seed)
 
 
     def get_data(self) -> pd.DataFrame:
