@@ -9,7 +9,7 @@ class DataHandler():
         self.scaler = StandardScaler()
 
 
-    def load_data(self, path=r"C:\Programowanie\GitHub\xai\healthcare-dataset-stroke-data.csv") -> None:
+    def load_data(self, path=r"C:\Users\Stanisław\Programowanie\GitHub\xai\healthcare-dataset-stroke-data.csv") -> None:
         #Wczytanie zbioru danych
         self.df = pd.read_csv(path)
 
