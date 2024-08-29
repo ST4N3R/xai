@@ -35,7 +35,7 @@ class DataHandler():
         cat_columns = ['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status']
         ohe = pd.get_dummies(self.df[cat_columns], prefix=cat_columns, dtype=int)
 
-        self.df = pd.concat([self.df, ohe], axis=1)
+        self.df = pd.concat([ohe, self.df], axis=1)
         self.df.drop(cat_columns, axis=1, inplace=True)
 
         if standarization:
