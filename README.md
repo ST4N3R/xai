@@ -19,9 +19,9 @@ In this case, dataset is 'stroke prediction dataset' from kaggle (https://www.ka
 
 Second dataset is 'flowers' from tensorflow.datasets. Dataset is made of 3680 images of flowers and the goal is to classify them to 5 classes - tulips, sunflowers, roses, dandelion and daisy. In this case, I used custom CNN model build in tensorflow. The explanation was made in lime, shap and integrated gradients that is implemented in saliency library.
 
-*   Text (WIP)
+*   Text
 
-Third dataset is 'sarcasm' that contains over 25 000 sentences that are clasified as 'no sarcasm' and 'sarcasm'. The model is RNN-LSTM model build in tensorflow. WIP: explanation is in progess.
+Third dataset is 'sarcasm' that contains over 25 000 sentences that are clasified as 'no sarcasm' and 'sarcasm'. The model is RNN-LSTM build in tensorflow. Explanations were made using lime and shap libraries.
 
 ## Technologies
 
